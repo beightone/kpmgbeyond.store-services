@@ -1,0 +1,13 @@
+
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Lista de arquivos protegidos
+PROTECTED_FILES=".cursorrules .github/copilot-instructions.md
+
+# Verifica se algum arquivo protegido está no stage
+if git diff --cached --name-only | grep -qE "($(echo $PROTECTED_FILES | sed 's/ /|/g'))"; then
+  echo "❌ ERRO: Você está tentando alterar arquivos de Arquitetura Protegidos!"
+  echo "Estes arquivos são geridos apenas pelos Tech Leads."
+  exit 1
+fi
