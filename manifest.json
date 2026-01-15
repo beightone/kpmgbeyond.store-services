@@ -1,9 +1,9 @@
 {
-  "name": "service-example",
-  "vendor": "vtex",
-  "version": "0.3.0",
-  "title": "Service Example",
-  "description": "Reference app for VTEX IO Services",
+  "name": "store-services",
+  "vendor": "kpmgprivateenterprise",
+  "version": "0.0.0",
+  "title": "KPMG Beyond Store Services",
+  "description": "Backend services for KPMG Beyond on VTEX IO",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {},
@@ -15,6 +15,49 @@
     "prereleasy": "bash lint.sh"
   },
   "credentialType": "absolute",
+  "settingsSchema": {
+    "title": "KPMG Beyond Settings",
+    "type": "object",
+    "properties": {
+      "appKey": {
+        "title": "VTEX App Key",
+        "type": "string"
+      },
+      "appToken": {
+        "title": "VTEX App Token",
+        "type": "string"
+      },
+      "encryptionKey": {
+        "title": "Encryption Key",
+        "type": "string"
+      },
+      "kpmgUsername": {
+        "title": "KPMG Username",
+        "type": "string"
+      },
+      "kpmgPassword": {
+        "title": "KPMG Password",
+        "type": "string"
+      },
+      "b2cUsername": {
+        "title": "B2C Username",
+        "type": "string"
+      },
+      "b2cPassword": {
+        "title": "B2C Password",
+        "type": "string"
+      },
+      "receitaWsToken": {
+        "title": "ReceitaWS Token",
+        "type": "string"
+      },
+      "rdStationApiKey": {
+        "title": "RD Station API Key",
+        "type": "string"
+      }
+    },
+    "required": ["encryptionKey"]
+  },
   "policies": [
     {
       "name": "outbound-access",
@@ -24,10 +67,73 @@
       }
     },
     {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "http-intake.logs.datadoghq.com",
+        "path": "/api/v2/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "receitaws.com.br",
+        "path": "/v1/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.rd.services",
+        "path": "/platform/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "kpmgamrb2c.b2clogin.com",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "contrato.beyond.kpmg.com.br",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "contrato-dev.beyond.kpmg.com.br",
+        "path": "*"
+      }
+    },
+    {
       "name": "colossus-fire-event"
     },
     {
       "name": "colossus-write-logs"
+    },
+    {
+      "name": "vbase-read-write"
+    },
+    {
+      "name": "get-settings"
+    },
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "OMSViewer"
+    },
+    {
+      "name": "read-subscription"
+    },
+    {
+      "name": "write-subscription"
+    },
+    {
+      "name": "receive-orders-broadcast"
     }
   ],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
