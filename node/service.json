@@ -1,13 +1,77 @@
 {
   "memory": 256,
-  "ttl": 10,
-  "timeout": 2,
+  "ttl": 60,
+  "timeout": 10,
   "minReplicas": 2,
   "maxReplicas": 4,
-  "workers": 1,
+  "workers": 4,
+  "events": {
+    "webhook": {
+      "sender": "vtex.orders-broadcast",
+      "topics": [
+        "order-status-updated"
+      ]
+    }
+  },
   "routes": {
+    "cnpj": {
+      "path": "/_v/api/kpmg/cnpj/:cnpj",
+      "public": true
+    },
+    "order": {
+      "path": "/_v/api/kpmg/order",
+      "public": true
+    },
+    "orderUpright": {
+      "path": "/_v/api/kpmg/order-upright",
+      "public": true
+    },
+    "interestedUser": {
+      "path": "/_v/api/kpmg/interested-user",
+      "public": true
+    },
+    "populateScheduleForm": {
+      "path": "/_v/api/kpmg/populate-schedule-form",
+      "public": true
+    },
+    "cancelSubscription": {
+      "path": "/_v/api/kpmg/cancel-subscription",
+      "public": true
+    },
+    "rdStation": {
+      "path": "/_v/api/kpmg/rd-station",
+      "public": true
+    },
     "status": {
-      "path": "/_v/status/:code",
+      "path": "/_v/api/kpmg/status",
+      "public": true
+    },
+    "keepalive": {
+      "path": "/_v/api/kpmg/keepalive",
+      "public": true
+    },
+    "createRelation": {
+      "path": "/_v/api/kpmg/create-relation",
+      "public": true
+    },
+    "findRelation": {
+      "path": "/_v/api/kpmg/find-relation",
+      "public": true
+    },
+    "health": {
+      "path": "/_v/api/kpmg/health",
+      "public": true
+    },
+    "isUserRegistered": {
+      "path": "/_v/api/kpmg/is-user-registered/:cnpj/:dataEntity",
+      "public": true
+    },
+    "registerInDataEntity": {
+      "path": "/_v/api/kpmg/register/:dataEntity",
+      "public": true
+    },
+    "kpmgOrderToken": {
+      "path": "/_v/api/kpmg/order-token",
       "public": true
     }
   }
