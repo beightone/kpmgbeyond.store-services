@@ -3,8 +3,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "lint": "eslint --ext js,jsx,ts,tsx .",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\""
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "husky": {
     "hooks": {
