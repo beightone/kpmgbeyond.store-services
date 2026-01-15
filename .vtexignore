@@ -1,1 +1,19 @@
 node/__tests__/
+# Ignorar dependências locais (o VTEX Builder instala na nuvem)
+node_modules
+*/node_modules
+
+# Ignorar arquivos de build e logs
+build
+dist
+coverage
+.DS_Store
+*.log
+
+# Ignorar arquivos de configuração de desenvolvimento que não devem ir para prod
+.env
+.cursorrules
+.vscode
+.github
+README.md
+docs
