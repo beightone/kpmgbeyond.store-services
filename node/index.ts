@@ -48,12 +48,6 @@ const clients: ClientsConfig<Clients> = {
   },
 }
 
-declare const process: {
-  env: {
-    VTEX_APP_ID: string
-  }
-}
-
 export default new Service({
   clients,
   events: {
