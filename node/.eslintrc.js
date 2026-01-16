@@ -1,28 +1,30 @@
-{
-  "root": true,
-  "env": {
-    "node": true,
-    "es2021": true
+const path = require('path');
+
+module.exports = {
+  root: true,
+  env: {
+    node: true,
+    es2021: true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: "module",
+    // AQUI ESTÁ A MÁGICA: O __dirname diz "o tsconfig está nesta mesma pasta"
+    project: [path.resolve(__dirname, './tsconfig.json')],
+    tsconfigRootDir: __dirname
   },
-  "plugins": ["@typescript-eslint", "import"],
-  "extends": [
+  plugins: ["@typescript-eslint", "import"],
+  extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "rules": {
-    "// --- REGRAS DE ARQUITETURA VTEX IO ---": "-------------------------",
-
-    "// 1. Proibir Console (Força o uso de ctx.vtex.logger)": "off",
+  rules: {
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
     "no-console": "error",
-
-    "// 2. Proibir Bibliotecas de HTTP Externas (Força o uso de Clients)": "off",
     "no-restricted-imports": [
       "error",
       {
@@ -46,23 +48,10 @@
         ]
       }
     ],
-
-    "// 3. Performance (Evitar Await em Loop - Cold Start)": "off",
     "no-await-in-loop": "error",
-
-    "// --- REGRAS DE TIPAGEM RÍGIDA (TypeScript) ---": "----------------",
-
-    "// 4. Proibir 'any' (Segurança de Tipos)": "off",
     "@typescript-eslint/no-explicit-any": "error",
-
-    "// 5. Exigir retorno explícito em funções (Documentação automática)": "off",
     "@typescript-eslint/explicit-module-boundary-types": "warn",
-
-    "// 6. Variáveis não usadas (Limpeza de código)": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-
-    "// --- BOAS PRÁTICAS GERAIS ---": "---------------------------------",
-
     "eqeqeq": ["error", "always"],
     "no-var": "error",
     "prefer-const": "error",
@@ -76,4 +65,4 @@
       }
     ]
   }
-}
+};

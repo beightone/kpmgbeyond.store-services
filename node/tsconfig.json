@@ -4,7 +4,7 @@
     "target": "es2019",
     "module": "commonjs",
     "moduleResolution": "node",
-    "allowJs": false,
+    "allowJs": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -16,7 +16,7 @@
     "outDir": "./build",
     "typeRoots": ["./node_modules/@types", "./typings"]
   },
-  "include": ["./**/*.ts"],
+  "include": ["./**/*.ts", "./**/*.js", ".eslintrc.js"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",
