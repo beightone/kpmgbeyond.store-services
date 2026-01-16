@@ -1,11 +1,3 @@
-// Promotions middlewares
-export { getPromotion } from './get-promotion/get-promotion'
-export { listAllPromotions } from './list-all-promotions'
-export { getPromotionsSettings } from './get-promotions-settings'
-export { filterPromotions } from './filter-promotions'
-export { calculatePromotionsDiscounts } from './promotions-discounts'
-
-// KPMG middlewares
 export { cancelSubscription } from './cancel-subscription'
 export { lookupCnpj } from './cnpj'
 export { createOrderRelation } from './create-relation'
@@ -25,5 +17,3 @@ export { withAppSettings } from './with-app-settings'
 
 // Event handlers
 export { webhook } from './webhook'
-
-

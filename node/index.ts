@@ -3,13 +3,6 @@ import { LRUCache, Service, method } from '@vtex/api'
 
 import { Clients } from './clients'
 import {
-  // Promotions
-  getPromotion,
-  filterPromotions,
-  getPromotionsSettings,
-  listAllPromotions,
-  calculatePromotionsDiscounts,
-  // KPMG
   cancelSubscription,
   lookupCnpj,
   createOrderRelation,
@@ -54,18 +47,6 @@ export default new Service({
     webhook,
   },
   routes: {
-    // Promotions routes
-    getPromotion: method({
-      GET: [getPromotion],
-    }),
-    productPromotions: method({
-      GET: [
-        listAllPromotions,
-        getPromotionsSettings,
-        filterPromotions,
-        calculatePromotionsDiscounts,
-      ],
-    }),
     // KPMG routes
     cnpj: method({
       GET: [withAppSettings, lookupCnpj],
